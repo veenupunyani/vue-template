@@ -1,113 +1,97 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+  <div class="url-shortener">
+    <h1>Create a short URL</h1>
+    <div class="input-group">
+      <div class="input-container">
+        <label for="targetURL">Target URL: </label>
+        <input v-model="targetURL" id="targetURL" placeholder="Enter your target URL" />
+      </div>
+      <div class="input-container">
+        <label for="notes">Notes: </label>
+        <input v-model="notes" id="notes" placeholder="Enter notes (optional)" />
+      </div>
+      <div class="input-container">
+        <label for="tags">Tags: </label>
+        <input v-model="tags" id="tags" placeholder="Enter tags, separated by commas (optional)" />
+      </div>
+      <button @click="shortenURL">Shorten</button>
+    </div>
+    <p v-if="shortenedURL">Shortened URL: <a :href="shortenedURL">{{ shortenedURL }}</a></p>
   </div>
 </template>
 
+
 <script>
 export default {
-  name: 'HelloWorld',
-  data () {
+  name: 'URLShortener',
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
-}
-</script>
+      targetURL: '',
+      notes: '',
+      tags: '',
+      shortenedURL: null,
+    };
+  },
+  methods: {
+    shortenURL() {
+      // URL shortening logic here.
+      
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+      // For demonstration, let's pretend we shortened the URL and got a result.
+      this.shortenedURL = 'https://short.url/abcd';
+    },
+  },
+};
+</script>
 <style scoped>
-h1, h2 {
-  font-weight: normal;
+.url-shortener {
+  display: flex;
+  flex-direction: column;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+.input-group {
+  display: flex;
+  flex-direction: column;
 }
-li {
+
+.input-container {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.input-container label {
+  font-weight: bold;
+  color: #000; /* Black text color */
   display: inline-block;
-  margin: 0 10px;
+  width: 30%;
+  margin-right: 10px;
 }
-a {
-  color: #42b983;
+
+h1 {
+  margin-bottom: 10px; /* Add some space between the heading and the form */
 }
+
+input, textarea {
+  border: 1px solid #000; /* Black border */
+  padding: 5px;
+  color: #000; /* Black text color */
+  width: 100%;
+}
+
+button {
+  background-color: #003366; /* Black button background */
+  color: #fff; /* White button text */
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+
+
 </style>
+
+
+
+
